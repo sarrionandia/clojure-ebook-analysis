@@ -31,3 +31,11 @@
              ))))
   )
 
+(deftest frequencies-to-rank-ratios-test
+  (testing "API spec"
+    (let [input (slurp "resources/books/pg1661.txt") ;; Sherlock Holmes
+          freqs (word-frequencies input)
+          top-ten (take 5 (zipfify freqs))]
+      (is (= [1 (/ 1 2) (/ 1 3) (/ 1 4) (/ 1 5)] top-ten)))))
+
+
